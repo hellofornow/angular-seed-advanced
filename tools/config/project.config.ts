@@ -32,9 +32,18 @@ export class ProjectConfig extends SeedAdvancedConfig {
 
     let additionalPackages: ExtendPackages[] = [{
       name: 'angular2-fontawesome',
-      path: 'node_modules/angular2-fontawesome/angular2-fontawesome.js'
+      packageMeta: {
+        main: 'bundles/angular2-fontawesome.umd.min.js',
+        defaultExtension: 'js'
+      }
     }];
     this.addPackagesBundles(additionalPackages);
+
+    this.DESKTOP_PACKAGES = [
+      ...this.DESKTOP_PACKAGES,
+      ...additionalPackages,
+    ];
+
 
     /* Add to or override NPM module configurations: */
     // this.mergeObject(this.PLUGIN_CONFIGS['browser-sync'], { ghostMode: false });
